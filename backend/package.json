@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "ReadME Generator Backend",
+  "main": "./dist/src/server.js",
+  "author": "ShaanCoding",
+  "license": "private",
+  "private": true,
+  "scripts": {
+    "start": "node dist/src/server.js",
+    "predev": "npm run swagger",
+    "prebuild": "npm run swagger",
+    "build": "npx tsc",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/server.js\"",
+    "dev2": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/server.js\" \"nodemon -x tsoa spec\"",
+    "swagger": "tsoa spec",
+    "runAPI": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/generator/helpers/validateSchema.js\"",
+    "runAPI2": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/generator/garageFarmAPI/index.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": ""
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0",
+    "swagger-ui-express": "^5.0.0",
+    "tsoa": "^5.1.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "@types/express": "^4.17.21",
+    "@types/http-errors": "^2.0.4",
+    "@types/morgan": "^1.9.9",
+    "@types/swagger-ui-express": "^4.1.6",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.3.2"
+  }
+}
