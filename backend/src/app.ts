@@ -38,6 +38,6 @@ app.use(
 app.set("port", PORT!);
 
 // Primary app routes
-app.use("/ping", pingRoutes.default);
+app.use(pingRoutes.default);
 
 export default app;
