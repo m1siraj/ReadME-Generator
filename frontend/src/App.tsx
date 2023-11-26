@@ -5,6 +5,7 @@ import DefaultLayout from "./layouts/Default";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Home from "./pages/Home";
 import GeneratorLayout from "./layouts/Generator";
+import SelectTemplate from "./pages/SelectTemplate";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <></>,
+        element: <SelectTemplate />,
       },
     ],
   },
