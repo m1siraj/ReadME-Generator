@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DefaultLayout from "./layouts/Default";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Home from "./pages/Home";
+import GeneratorLayout from "./layouts/Generator";
 
 const queryClient = new QueryClient();
 
@@ -22,37 +23,16 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-      // {
-      //   path: "/about-us",
-      //   element: <AboutUs />,
-      // },
-      // {
-      //   path: "/store",
-      //   children: [
-      //     {
-      //       index: true,
-      //       element: <Store />,
-      //     },
-      //     {
-      //       path: "/store/:id",
-      //       element: <StoreID />,
-      //     },
-      //   ],
-      // },
-      // {
-      //   path: "/profile",
-      //   // loader: profileLoader(queryClient),
-      //   children: [
-      //     {
-      //       index: true,
-      //       element: <Profile />,
-      //     },
-      //     {
-      //       path: "/profile/purchased/:id",
-      //       element: <ProfileID />,
-      //     },
-      //   ],
-      // },
+    ],
+  },
+  {
+    path: "/generator",
+    element: <GeneratorLayout />,
+    children: [
+      {
+        index: true,
+        element: <></>,
+      },
     ],
   },
 ]);
