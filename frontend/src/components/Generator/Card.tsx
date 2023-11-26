@@ -1,5 +1,14 @@
-import { format } from "date-fns";
 import React from "react";
+import {
+  AiFillGithub,
+  AiFillTwitterCircle,
+  AiFillLinkedin,
+  AiFillFacebook,
+  AiFillInstagram,
+  AiOutlineGlobal,
+} from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { format } from "date-fns";
 import { generateTagColor } from "../../utils/generateTagColor";
 
 interface CardProps {
@@ -38,14 +47,15 @@ const Card: React.FC<CardProps> = ({
   const navigate = useNavigate();
 
   return (
-    <div className="w-[314px] h-[500px] shrink-0 rounded-[30px] bg-primary p-[25px] text-secondary">
-      <ImageTitleAuthor
+    <div className="w-[314px] h-[450px] shrink-0 rounded-[30px] bg-primary p-[25px] text-secondary">
+      <ImageTitle
         title={title}
         author={author}
         imageURL={imageURL}
         createdAt={createdAt}
         isFeatured={isFeatured}
       />
+      <Author author={author} />
       <Description description={description} />
       <Tags tags={tags} />
       <Contributors contributors={contributors} />
@@ -70,7 +80,7 @@ const Card: React.FC<CardProps> = ({
 // Need to import star to signify featured
 import { AiFillStar } from "react-icons/ai";
 
-const ImageTitleAuthor: React.FC<{
+const ImageTitle: React.FC<{
   imageURL: string;
   title: string;
   author: {
@@ -79,9 +89,9 @@ const ImageTitleAuthor: React.FC<{
   };
   createdAt: string;
   isFeatured: boolean;
-}> = ({ imageURL, title, author, createdAt, isFeatured }) => {
+}> = ({ imageURL, title, createdAt, isFeatured }) => {
   return (
-    <div className="flex gap-[25px] mb-[25px]">
+    <div className="flex gap-[25px]">
       <div>
         <img
           className="rounded-full"
@@ -105,12 +115,36 @@ const ImageTitleAuthor: React.FC<{
         <p className="text-[8px] font-normal tracking-primary mb-3">
           {format(new Date(createdAt), "MMM dd, yyyy")}
         </p>
-        <p className="text-[8px] font-normal tracking-primary mb-3">
-          {author.name}
-        </p>
-        <p className="text-[8px] font-normal tracking-primary">
-          {author.url} - NEED TO ADD STYLING HERE
-        </p>
+      </div>
+    </div>
+  );
+};
+
+const Author: React.FC<{
+  author: {
+    name: string;
+    url: string;
+  };
+}> = ({ author }) => {
+  return (
+    <div className="flex items-center gap-[25px] mb-3">
+      <h2 className="text-xs font-medium tracking-secondary mb-3 h-full">
+        Created By
+      </h2>
+
+      <div className="text-[0.6rem] tracking-primary flex items-center justify-start flex-wrap gap-1">
+        <a
+          href={author.url}
+          className="flex items-center justify-center p-2
+          border-gray-400 border-[0.25px] rounded-md hover:border-transparent
+          hover:bg-secondary hover:text-secondary hover:rounded-md hover:bg-opacity-30  transition-all duration-300 ease-in-out
+          "
+        >
+          {/* Social Icon */}
+          <SocialIcon socialIcon={"github"} />
+          {/* Name */}
+          <p className="tracking-primary h-4 px-1 rounded-md">{author.name}</p>
+        </a>
       </div>
     </div>
   );
@@ -118,7 +152,7 @@ const ImageTitleAuthor: React.FC<{
 
 const Description: React.FC<{ description: string }> = ({ description }) => {
   return (
-    <div className="mb-[25px]">
+    <div className="mb-3">
       <h2 className="text-xs font-medium tracking-secondary mb-3">
         Description
       </h2>
@@ -136,7 +170,7 @@ const Tags: React.FC<{
   }[];
 }> = ({ tags }) => {
   return (
-    <div className="mb-[25px]">
+    <div className="mb-3">
       <h2 className="text-xs font-medium tracking-secondary mb-3">Tags</h2>
       <div className="text-[0.6rem] tracking-primary flex flex-wrap gap-1">
         {tags?.map(
@@ -169,7 +203,7 @@ const Contributors: React.FC<{
   }[];
 }> = ({ contributors }) => {
   return (
-    <div className="mb-[25px]">
+    <div className="mb-3">
       <h2 className="text-xs font-medium tracking-secondary mb-3">
         Contributors
       </h2>
@@ -205,17 +239,6 @@ const Contributors: React.FC<{
   );
 };
 
-import {
-  AiFillGithub,
-  AiFillTwitterCircle,
-  AiFillLinkedin,
-  AiFillFacebook,
-  AiFillInstagram,
-  AiOutlineGlobal,
-} from "react-icons/ai";
-import { CustomButton } from "./GeneratorNavbar";
-import { useNavigate } from "react-router-dom";
-
 // World icon (earth)
 
 const SocialIcon: React.FC<{ socialIcon: string }> = ({ socialIcon: key }) => {
@@ -236,41 +259,3 @@ const SocialIcon: React.FC<{ socialIcon: string }> = ({ socialIcon: key }) => {
 };
 
 export default Card;
-
-/*
-
-
-
-
-      <div className="gap-[15px] flex flex-col">
-        <div className="">
-          <h4 className="text-[0.8125rem] font-medium tracking-secondary mb-[5px]">
-            Description
-          </h4>
-          <p className="text-[0.6rem] tracking-primary">{description}</p>
-        </div>
-
-        <div className="">
-          <h4 className="text-[0.8125rem] font-medium tracking-secondary mb-[5px]">
-            Tags
-          </h4>
-          <div className="text-[0.6rem] tracking-primary flex flex-wrap gap-1">
-            {tags.map((tag, index) => (
-              <span
-                style={{ backgroundColor: generateTagColor(tag.value) }}
-                className={cn(
-                  buttonVariants({ variant: "default", size: "sm" })
-                )}
-                key={index}
-              >
-                {tag.value}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {<Contributors contributors={contributors} />}
-
-        <Link href={`/generator/templates/${id}`}>Button</Link>
-      </div>
-    */

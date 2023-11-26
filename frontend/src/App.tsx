@@ -34,6 +34,10 @@ const router = createBrowserRouter([
         index: true,
         element: <SelectTemplate />,
       },
+      {
+        path: "/generator/:id",
+        element: <div>Template</div>,
+      },
     ],
   },
 ]);

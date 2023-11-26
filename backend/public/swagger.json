@@ -17,6 +17,114 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"Author": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"url": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"url"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Contributor": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"url": {
+						"type": "string"
+					},
+					"social": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"url",
+					"social"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Tag": {
+				"properties": {
+					"value": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"value",
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Template": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"author": {
+						"$ref": "#/components/schemas/Author"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"contributors": {
+						"items": {
+							"$ref": "#/components/schemas/Contributor"
+						},
+						"type": "array"
+					},
+					"description": {
+						"type": "string"
+					},
+					"imageURL": {
+						"type": "string"
+					},
+					"isFeatured": {
+						"type": "boolean"
+					},
+					"tags": {
+						"items": {
+							"$ref": "#/components/schemas/Tag"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"title",
+					"author",
+					"createdAt",
+					"contributors",
+					"description",
+					"imageURL",
+					"isFeatured",
+					"tags"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TemplateResponse": {
+				"items": {
+					"$ref": "#/components/schemas/Template"
+				},
+				"type": "array"
 			}
 		},
 		"securitySchemes": {}
@@ -44,6 +152,25 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/PingResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/Templates/getTemplate": {
+			"get": {
+				"operationId": "GetTemplates",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TemplateResponse"
 								}
 							}
 						}

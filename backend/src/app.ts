@@ -16,6 +16,7 @@ import swaggerUI from "swagger-ui-express";
 
 // Controllers (route handlers)
 import * as pingRoutes from "./routes/ping.routes";
+import * as templateRoutes from "./routes/template.routes";
 
 // Create Express server
 const app: Express = express();
@@ -39,5 +40,6 @@ app.set("port", PORT!);
 
 // Primary app routes
 app.use(pingRoutes.default);
+app.use("/templates", templateRoutes.default);
 
 export default app;
