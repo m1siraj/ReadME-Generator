@@ -11,6 +11,7 @@ import {
 } from "./utils/env";
 
 import express, { Express } from "express";
+import cors from "cors";
 import morgan from "morgan";
 import swaggerUI from "swagger-ui-express";
 
@@ -34,6 +35,8 @@ app.use(
     },
   })
 );
+
+app.use(cors());
 
 // Express configuration
 app.set("port", PORT!);

@@ -161,7 +161,7 @@
 				"parameters": []
 			}
 		},
-		"/Templates/getTemplate": {
+		"/templates/getTemplate": {
 			"get": {
 				"operationId": "GetTemplates",
 				"responses": {

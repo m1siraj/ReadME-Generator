@@ -1,10 +1,10 @@
-import OpenAPI from "openapi-typescript-codegen";
+import { generate } from "openapi-typescript-codegen";
 import * as rimraf from "rimraf";
 
-const generate = async () => {
+const generateAPI = async () => {
   await rimraf.rimraf("./src/api/generated");
 
-  await OpenAPI.generate({
+  await generate({
     exportCore: true,
     exportSchemas: false,
     exportServices: true,
@@ -16,4 +16,4 @@ const generate = async () => {
   console.log("Generated API client");
 };
 
-generate();
+generateAPI();

@@ -113,7 +113,8 @@ const ImageTitle: React.FC<{
         </div>
 
         <p className="text-[8px] font-normal tracking-primary mb-3">
-          {format(new Date(createdAt), "MMM dd, yyyy")}
+          {/* {format(new Date(createdAt), "MMM dd, yyyy")} */}
+          {createdAt}
         </p>
       </div>
     </div>

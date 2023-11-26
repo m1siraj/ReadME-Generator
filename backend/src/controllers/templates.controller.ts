@@ -31,10 +31,10 @@ interface Tag {
 }
 
 const orderByFeatured = (data: any) => {
-  return data.sort((a: any, b: any) => {
-    if (a.featured) {
+  return data.sort((a: Template, b: Template) => {
+    if (a.isFeatured) {
       return -1;
-    } else if (b.featured) {
+    } else if (b.isFeatured) {
       return 1;
     } else {
       return 0;
@@ -42,11 +42,11 @@ const orderByFeatured = (data: any) => {
   });
 };
 
-@Route("Templates")
+@Route("templates")
 export default class TemplateController {
   @Get("/getTemplate")
   public async getTemplates(): Promise<TemplateResponse> {
-    return orderByFeatured([
+    const data = [
       {
         id: "1",
         title: "Shaans Default Template",
@@ -247,6 +247,8 @@ export default class TemplateController {
           },
         ],
       },
-    ] as TemplateResponse);
+    ] as TemplateResponse;
+
+    return orderByFeatured(data);
   }
 }
