@@ -10,20 +10,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // keyframes: {
-      //   "accordion-down": {
-      //     from: { height: 0 },
-      //     to: { height: "var(--radix-accordion-content-height)" },
-      //   },
-      //   "accordion-up": {
-      //     from: { height: "var(--radix-accordion-content-height)" },
-      //     to: { height: 0 },
-      //   },
-      // },
-      // animation: {
-      //   "accordion-down": "accordion-down 0.2s ease-out",
-      //   "accordion-up": "accordion-up 0.2s ease-out",
-      // },
       colors: {
         primary: "#191919",
         secondary: "#F4F4F4",
@@ -36,10 +22,13 @@ module.exports = {
         homeBlue: "#C1FDFF",
       },
       fontFamily: {
-        // poppins: ["var(--font-poppins)"],
-        // jakarta: ["var(--font-jakarta)"],
-        // manrope: ["var(--font-manrope)"],
-        // inter: ["var(--font-inter)"],
+        poppins: ["Poppins", "sans-serif"],
+        jakarta: ["Plus Jakarta Sans", "sans-serif"],
+        manrope: ["Manrope", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+      },
+      fontWeight: {
+        500: 500,
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

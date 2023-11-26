@@ -42,7 +42,6 @@ const Footer = () => {
     <div
       className="
     bg-gradient-to-t from-[#16474A] to-[#16474A40]
-    
     w-full mt-20 pt-20 px-[90px] rounded-t-[30px]"
     >
       <div className="w-full flex items-center justify-between mb-[78px]">
@@ -105,15 +104,13 @@ const QuickLinks: React.FC<IQuickLinks> = ({ name, url }) => {
   const navigate = useNavigate();
 
   return (
-    <li className="text-white font-poppins text-base font-normal mb-3">
-      <div
-        className="hover:opacity-90"
-        onClick={() => {
-          navigate(url);
-        }}
-      >
-        {name}
-      </div>
+    <li
+      className="text-white font-poppins text-base font-normal mb-3 hover:opacity-90 hover:cursor-pointer"
+      onClick={() => {
+        navigate(url);
+      }}
+    >
+      {name}
     </li>
   );
 };
@@ -132,7 +129,7 @@ const SocialMedia: React.FC<ISocialMedia> = ({ icon, name, url }) => {
       onClick={() => {
         navigate(url);
       }}
-      className="hover:opacity-90"
+      className="hover:opacity-90 hover:cursor-pointer"
     >
       <div className="flex items-center space-x-4 mb-3">
         <img className="w-[30px] h-[30px]" src={icon} alt={name} />
