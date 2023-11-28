@@ -125,6 +125,96 @@
 					"$ref": "#/components/schemas/Template"
 				},
 				"type": "array"
+			},
+			"VariableType": {
+				"enum": [
+					"TextArea",
+					"Input",
+					"Boolean",
+					"Array",
+					"Dropdown",
+					"Object"
+				],
+				"type": "string"
+			},
+			"Variable": {
+				"properties": {
+					"label": {
+						"type": "string"
+					},
+					"variableName": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"type": {
+						"$ref": "#/components/schemas/VariableType"
+					}
+				},
+				"required": [
+					"label",
+					"variableName",
+					"value",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Function": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"macroName": {
+						"type": "string"
+					},
+					"variables": {
+						"items": {
+							"$ref": "#/components/schemas/Variable"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"name",
+					"macroName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SidebarElement": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"functions": {
+						"items": {
+							"$ref": "#/components/schemas/Function"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"title",
+					"description",
+					"functions"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SidebarResponse": {
+				"items": {
+					"$ref": "#/components/schemas/SidebarElement"
+				},
+				"type": "array"
 			}
 		},
 		"securitySchemes": {}
@@ -171,6 +261,25 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/TemplateResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/templates/getSidebar": {
+			"get": {
+				"operationId": "GetSidebar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SidebarResponse"
 								}
 							}
 						}

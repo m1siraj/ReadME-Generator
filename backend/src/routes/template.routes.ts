@@ -10,4 +10,10 @@ router.get("/getTemplate", async (req, res) => {
   return res.json(response);
 });
 
+router.get("/getSidebar", async (req, res) => {
+  const controller = new TemplateController();
+  const response = await controller.getSidebar();
+  return res.json(response);
+});
+
 export default router;
