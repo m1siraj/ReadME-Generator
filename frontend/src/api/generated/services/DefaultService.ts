@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { PingResponse } from '../models/PingResponse';
+import type { SidebarResponse } from '../models/SidebarResponse';
 import type { TemplateResponse } from '../models/TemplateResponse';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -30,7 +31,18 @@ export class DefaultService {
     public getTemplates(): CancelablePromise<TemplateResponse> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/Templates/getTemplate',
+            url: '/templates/getTemplate',
+        });
+    }
+
+    /**
+     * @returns SidebarResponse Ok
+     * @throws ApiError
+     */
+    public getSidebar(): CancelablePromise<SidebarResponse> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/templates/getSidebar',
         });
     }
 
